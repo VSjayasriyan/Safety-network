@@ -1,0 +1,21 @@
+{
+  "name": "surakshanet",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AI-powered national-scale emergency safety platform.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @surakshanet/web\" \"npm run dev -w @surakshanet/api\"",
+    "build": "npm run build -w @surakshanet/web && npm run build -w @surakshanet/api",
+    "lint": "npm run lint -w @surakshanet/web",
+    "typecheck": "npm run typecheck -w @surakshanet/web && npm run typecheck -w @surakshanet/api",
+    "db:schema": "psql \"$DATABASE_URL\" -f infra/db/schema.sql"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.5.4"
+  }
+}
